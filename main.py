@@ -24,8 +24,23 @@ def adicionar_tarefa():
 
     print("Tarefa adicionada com sucesso!")
 
-
 def listar_tarefas():
+    if not tarefas:
+        print("\nVocê ainda não possui tarefas.")
+        print("Utilize a opção 1 para cadastrar sua primeira tarefa.")
+        return
+
+    print("\n========== LISTA DE TAREFAS ==========")
+
+    for tarefa in tarefas:
+        print("--------------------------------------")
+        print(f"ID: {tarefa['id']}")
+        print(f"Descrição: {tarefa['descricao']}")
+        print(f"Status: {tarefa['status']}")
+
+    print("--------------------------------------")
+    print(f"Total de tarefas: {len(tarefas)}")
+    print("======================================")
     if not tarefas:
         print("\nNenhuma tarefa cadastrada.")
         return
