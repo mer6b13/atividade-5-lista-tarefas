@@ -27,15 +27,40 @@ def adicionar_tarefa():
 
 def listar_tarefas():
     if not tarefas:
-        print("\nNenhuma tarefa cadastrada.")
+        print("\nVocê ainda não possui tarefas.")
+        print("Utilize a opção 1 para cadastrar sua primeira tarefa.")
         return
 
-    print("\n===== LISTA DE TAREFAS =====")
+    print("\n========== LISTA DE TAREFAS ==========")
 
     for tarefa in tarefas:
-        print(f"\nID: {tarefa['id']}")
+        print("--------------------------------------")
+        print(f"ID: {tarefa['id']}")
         print(f"Descrição: {tarefa['descricao']}")
         print(f"Status: {tarefa['status']}")
+
+    print("--------------------------------------")
+    print(f"Total de tarefas: {len(tarefas)}")
+    print("======================================")
+
+
+def contar_tarefas():
+    total = len(tarefas)
+
+    pendentes = 0
+    concluidas = 0
+
+    for tarefa in tarefas:
+        if tarefa["status"] == "Pendente":
+            pendentes += 1
+        elif tarefa["status"] == "Concluída":
+            concluidas += 1
+
+    print("\n======= RESUMO DAS TAREFAS =======")
+    print(f"Total de tarefas: {total}")
+    print(f"Tarefas pendentes: {pendentes}")
+    print(f"Tarefas concluídas: {concluidas}")
+    print("=================================")
 
 
 def concluir_tarefa():
@@ -116,7 +141,8 @@ def menu():
         print("3 - Concluir tarefa")
         print("4 - Remover tarefa")
         print("5 - Alterar descrição")
-        print("6 - Sair")
+        print("6 - Contar tarefas")
+        print("7 - Sair")
         print("========================================")
 
         opcao = input("Escolha uma opção: ")
@@ -137,6 +163,9 @@ def menu():
             alterar_descricao()
 
         elif opcao == "6":
+            contar_tarefas()
+
+        elif opcao == "7":
             print("Encerrando o sistema. Até mais!")
             break
 
