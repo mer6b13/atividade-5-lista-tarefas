@@ -26,7 +26,8 @@ def adicionar_tarefa():
 
 def listar_tarefas():
     if not tarefas:
-        print("\nNenhuma tarefa cadastrada.")
+        print("\nVocê ainda não possui tarefas.")
+        print("Utilize a opção 1 para cadastrar sua primeira tarefa.")
         return
 
     print("\n========== LISTA DE TAREFAS ==========")
